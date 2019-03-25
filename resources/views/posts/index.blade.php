@@ -20,7 +20,9 @@
                     <th>Title</th>
                     <th>Body</th>
                     <th>Category</th>
-                    <th>Creator</th>                    
+                    <th>URL</th>
+                    <th>Creator</th>
+                    <th>Created Time</th>
                     <th colspan="3">Action</th>
                 </tr>
             </thead>
@@ -30,8 +32,10 @@
                     <td>{{$post->id}}</td>
                     <td>{{$post->title}}</td>                    
                     <td>{{ str_limit($post->body, $limit = 100, $end = '...') }}</td>
-                    <td>{{$post->category->title}}</td>                                        
+                    <td>{{$post->category->title}}</td>
+                    <td>{{$post->slug}}</td>
                     <td>{{$post->user->name}}</td>
+                    <td>{{$post->created_at}}</td>
                     <td>
                         <a href="{{ route('posts.edit', $post->id)}}" class="btn btn-primary">Edit</a>
                     </td>

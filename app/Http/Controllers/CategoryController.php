@@ -20,6 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {        
+        $listCategory = Category::paginate(30);        
+        return view('categories.index', compact('listPost'));        
     }
 
     /**
@@ -48,7 +50,7 @@ class CategoryController extends Controller
         $category->title = $request->get('title');        
         $category->user_id = $user_id;
         $category->save();
-        return redirect()->route('categories.index')->with('success', 'berhasil ditambahkan');
+        return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
     }
 
     /**

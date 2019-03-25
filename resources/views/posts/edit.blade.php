@@ -12,13 +12,14 @@
                 <div class="card-header">{{ __('Create Post') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('posts.store', $post->id) }}">
+                    <form method="POST" action="{{ route('posts.update', $post->id) }}">
+                        @method('PATCH')
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $post->title) }}" required autofocus>
+                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ $post->title }}" required autofocus>
 
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback" role="alert">
@@ -32,7 +33,7 @@
                             <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Post Body') }}</label>
 
                             <div class="col-md-6">
-                                <input id="body" type="text" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body" value="{{ $post->body) }}" required autofocus>
+                                <input id="body" type="text" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body" value="{{ $post->body }}" required autofocus>
 
                                 @if ($errors->has('body'))
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +47,7 @@
                             <label for="slug" class="col-md-4 col-form-label text-md-right">{{ __('Post Slug') }}</label>
 
                             <div class="col-md-6">
-                                <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ $post->slug) }}" required autofocus>
+                                <input id="slug" type="text" class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}" name="slug" value="{{ $post->slug }}" required autofocus>
 
                                 @if ($errors->has('slug'))
                                     <span class="invalid-feedback" role="alert">
@@ -62,7 +63,7 @@
                             <div class="col-md-6">
                                 <select class="form-control select2-single" name="category_id">
                                     @foreach($listCategory as $category)
-                                        <option value='{{$category->id}}'>{{$category->name}}</option>
+                                        <option value='{{$category->id}}'>{{$category->title}}</option>
                                     @endforeach
                                 </select>
                             </div>

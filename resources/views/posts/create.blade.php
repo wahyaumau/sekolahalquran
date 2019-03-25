@@ -57,12 +57,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
+                            <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control select2-single" name="regency_id">
+                                <select class="form-control select2-single" name="category_id">
                                     @foreach($listCategory as $category)
-                                        <option value='{{$category->id}}'>{{$category->name}}</option>
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
                                     @endforeach
                                 </select>
                             </div>

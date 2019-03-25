@@ -66,9 +66,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -92,14 +93,21 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $this->validate($request, array(
-            'title' => 'required|max:255',
-            // 'slug' => 'required|min:5|max:255|unique:posts,slug',
-            'body' => 'required'                        
-        ));
-
-        $post = Post::find($id);        
+    {        
+        $post = Post::find($id);
+        if ($post->slug == $request->get('slug')) {
+            $this->validate($request, array(
+                'title' => 'required|max:255',                
+                'body' => 'required'                        
+            ));
+        }else{
+            $this->validate($request, array(
+                'title' => 'required|max:255',
+                'slug' => 'required|min:5|max:255|unique:posts,slug',
+                'body' => 'required'                        
+            ));
+        }
+        $post = Post::find($id);
         $post->title = $request->get('title');
         $post->body = $request->get('body');
         $post->slug = $request->get('slug');        
