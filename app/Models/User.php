@@ -46,4 +46,7 @@ class User extends Authenticatable
     public function category(){
         return $this->hasMany('App\Models\Category');
     }
+    public function tag(){
+        return $this->hasMany('App\Models\Category');
+    }
 }

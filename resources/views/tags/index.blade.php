@@ -6,7 +6,7 @@
             <h3>Daftar Category</h3>
         </div>
         <div class="col-md-4">
-            <a href="{{route('categories.create')}}"><button class="btn btn-primary">Create Category</button></a>
+            <a href="{{route('tags.create')}}"><button class="btn btn-primary">Create Tag</button></a>
         </div>
     </div>
     <div class="box">
@@ -22,14 +22,14 @@
             <tbody>
                 @foreach($listPost as $category)
                 <tr>
-                    <td>{{$category->id}}</td>
-                    <td>{{$category->title}}</td>
-                    <td>{{$category->user->name}}</td>
+                    <td>{{$tag->id}}</td>
+                    <td>{{$tag->title}}</td>
+                    <td>{{$tag->user->name}}</td>
                     <td>
-                        <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('tags.edit', $tag->id)}}" class="btn btn-primary">Edit</a>
                     </td>                    
                     <td>
-                        <form action="{{ route('categories.destroy', $category->id)}}" method="post">
+                        <form action="{{ route('tags.destroy', $tag->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>

@@ -19,5 +19,10 @@ Auth::routes();
 
 Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::resource('posts', 'PostController');
-Route::resource('categories', 'CategoryController');
+Route::resource('categories', 'CategoryController',[
+	'except' => ['show']
+]);
+Route::resource('tags', 'TagController', [
+	'except' => ['show']
+]);
 Route::get('/home', 'HomeController@index')->name('home');

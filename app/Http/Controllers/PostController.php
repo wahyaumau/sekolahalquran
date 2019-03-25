@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\SessionGuard;
@@ -33,7 +34,8 @@ class PostController extends Controller
     public function create()
     {
         $listCategory = Category::all();
-        return view('posts.create', compact('listCategory'));
+        $listTag = Tag::all();
+        return view('posts.create', compact('listCategory', 'listTag'));
     }
 
     /**
@@ -43,7 +45,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $this->validate($request, array(
             'title' => 'required|max:255',
             'slug' => 'required|min:5|max:255|unique:posts,slug',
@@ -57,6 +59,8 @@ class PostController extends Controller
         $post->category_id = $request->get('category_id');        
         $post->user_id = $user_id;  
         $post->save();      
+
+        $post->tags()->sync($request->tags, false);
         return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
     }
 
@@ -82,7 +86,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);        
         $listCategory = Category::all();
-        return view('posts.edit', compact('post', 'id','listCategory'));
+        $listTag = Tag::all();
+        return view('posts.edit', compact('post', 'id', 'listCategory', 'listTag'));
     }
 
     /**
@@ -112,7 +117,13 @@ class PostController extends Controller
         $post->body = $request->get('body');
         $post->slug = $request->get('slug');        
         $post->category_id = $request->get('category_id');  
-        $post->save();                    
+        $post->save();    
+        if (isset($request->tags)) {
+            $post->tags()->sync($request->tags);                
+        }else{
+            $post->tags()->sync(array());                
+        }
+        
         return redirect()->route('posts.index')->with('success', 'berhasil diedit');
     }
 
