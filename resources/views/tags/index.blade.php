@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h3>Daftar Category</h3>
+            <h3>Daftar Tag</h3>
         </div>
         <div class="col-md-4">
             <a href="{{route('tags.create')}}"><button class="btn btn-primary">Create Tag</button></a>
@@ -20,10 +20,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($listPost as $category)
+                @foreach($listTag as $tag)
                 <tr>
                     <td>{{$tag->id}}</td>
-                    <td>{{$tag->title}}</td>
+                    <td>{{$tag->name}}</td>
                     <td>{{$tag->user->name}}</td>
                     <td>
                         <a href="{{ route('tags.edit', $tag->id)}}" class="btn btn-primary">Edit</a>
@@ -38,7 +38,7 @@
                 </tr>
                 @endforeach
                 <div class="text-center">
-                    {!!$listPost->links(); !!}
+                    {!!$listTag->links(); !!}
                 </div>
             </tbody>
         </table>

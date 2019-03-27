@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($listPost as $category)
+                @foreach($listCategory as $category)
                 <tr>
                     <td>{{$category->id}}</td>
                     <td>{{$category->title}}</td>
@@ -38,7 +38,7 @@
                 </tr>
                 @endforeach
                 <div class="text-center">
-                    {!!$listPost->links(); !!}
+                    {!!$listCategory->links(); !!}
                 </div>
             </tbody>
         </table>

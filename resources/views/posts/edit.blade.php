@@ -72,7 +72,7 @@
                             <label for="tag_id" class="col-md-4 col-form-label text-md-right">{{ __('Tag') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control select2-multi" name="tags" multiple="multiple">
+                                <select class="form-control select2-multi" name="tags[]" multiple="multiple">
                                     @foreach($listTag as $tag)
                                         <option value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
@@ -100,6 +100,6 @@
     <script type="text/javascript">
         $('.select2-single').select2();
         $('.select2-single').select2().val({!! json_encode($post->category->id)!!}).trigger('change');
-        $('.select2-multi').select2().val({!! json_encode($post->tags()->getRelatedIds())!!}).trigger('change');
+        $('.select2-multi').select2().val({!! json_encode($post->tags()->allRelatedIds()->toArray())!!}).trigger('change');
     </script> 
 @endsection
