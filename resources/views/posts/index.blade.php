@@ -37,13 +37,13 @@
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>
-                        <a href="{{ route('posts.edit', $post->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('posts.edit', $post)}}" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
-                        <a href="{{ route('posts.show', $post->id)}}" class="btn btn-success">Show</a>
+                        <a href="{{ route('posts.show', $post)}}" class="btn btn-success">Show</a>
                     </td>
                     <td>
-                        <form action="{{ route('posts.destroy', $post->id)}}" method="post">
+                        <form action="{{ route('posts.destroy', $post)}}" method="post">
                           @csrf
                           @method('DELETE')
                           <button class="btn btn-danger" type="submit">Delete</button>

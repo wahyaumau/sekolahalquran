@@ -70,9 +70,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $post = Post::find($id);
+    public function show(Post $post)
+    {        
         return view('posts.show', compact('post'));
     }
 
@@ -82,12 +81,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $post = Post::find($id);        
+    public function edit(Post $post)
+    {        
         $listCategory = Category::all();
         $listTag = Tag::all();
-        return view('posts.edit', compact('post', 'id', 'listCategory', 'listTag'));
+        return view('posts.edit', compact('post', 'listCategory', 'listTag'));
     }
 
     /**
@@ -97,9 +95,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {        
-        $post = Post::find($id);
+    public function update(Request $request, Post $post)
+    {                
         if ($post->slug == $request->get('slug')) {
             $this->validate($request, array(
                 'title' => 'required|max:255',                
@@ -111,8 +108,7 @@ class PostController extends Controller
                 'slug' => 'required|min:5|max:255|unique:posts,slug',
                 'body' => 'required'                        
             ));
-        }
-        $post = Post::find($id);
+        }        
         $post->title = $request->get('title');
         $post->body = $request->get('body');
         $post->slug = $request->get('slug');        
@@ -133,10 +129,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $post = Post::findOrFail($id);
+    public function destroy(Post $post)
+    {        
         $post->delete();
+        $post->tags()->detach();
         return redirect()->route('posts.index')->with('success', 'berhasil dihapus');
     }
 }

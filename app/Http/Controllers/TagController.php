@@ -72,8 +72,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        $tag = Tag::find($id);                
-        return view('tags.edit', compact('tag', 'id'));
+        return view('tags.edit', compact('tag'));
     }
 
     /**
@@ -88,8 +87,7 @@ class TagController extends Controller
         $this->validate($request, array(
             'name' => 'required|max:255',            
         ));
-
-        $tag = Tag::find($id);        
+        
         $tag->name = $request->get('name');      
         $tag->save();          
         return redirect()->route('tags.index')->with('success', 'berhasil diedit');
@@ -102,8 +100,8 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tag $tag)
-    {
-        $tag = Tag::findOrFail($id);
+    {        
+        $tag->posts()->detach();
         $tag->delete();
         return redirect()->route('tags.index')->with('success', 'berhasil dihapus');
     }

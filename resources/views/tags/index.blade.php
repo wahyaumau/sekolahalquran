@@ -26,10 +26,10 @@
                     <td>{{$tag->name}}</td>
                     <td>{{$tag->user->name}}</td>
                     <td>
-                        <a href="{{ route('tags.edit', $tag->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('tags.edit', $tag)}}" class="btn btn-primary">Edit</a>
                     </td>                    
                     <td>
-                        <form action="{{ route('tags.destroy', $tag->id)}}" method="post">
+                        <form action="{{ route('tags.destroy', $tag)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>

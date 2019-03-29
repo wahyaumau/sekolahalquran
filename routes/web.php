@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::resource('posts', 'PostController');
+Route::post('comments/store/{post}', 'CommentController@store')->name('comments.store');
+Route::resource('comments', 'CommentController',[
+	'except' => ['create', 'show', 'store']
+]);
 Route::resource('categories', 'CategoryController',[
 	'except' => ['show']
 ]);

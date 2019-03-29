@@ -12,7 +12,7 @@
                 <div class="card-header">{{ __('Create Post') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('posts.update', $post->id) }}">
+                    <form method="POST" action="{{ route('posts.update', $post) }}">
                         @method('PATCH')
                         @csrf
                         <div class="form-group row">
