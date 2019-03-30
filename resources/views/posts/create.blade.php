@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('stylesheets')
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({ 
+            selector:'textarea',
+            plugins: 'link'
+        });
+    </script>
 @endsection
 
 @section('content')
