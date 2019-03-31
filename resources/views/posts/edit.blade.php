@@ -19,7 +19,7 @@
                 <div class="card-header">{{ __('Create Post') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('posts.update', $post) }}">
+                    <form method="POST" action="{{ route('posts.update', $post) }} " enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="form-group row">
@@ -39,7 +39,7 @@
                         <div class="form-group row">
                             <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Pilih Gambar') }}</label>
                             <div class="col-md-6">
-                                <input id="image" type="file" class="{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ $post->image }}" required autofocus>
+                                <input id="image" type="file" class="{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ $post->image }}" autofocus>
                                 @if ($errors->has('image'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('image') }}</strong>
@@ -51,7 +51,7 @@
                         <div class="form-group row">
                             <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Post Body') }}</label>
                             <div class="col-md-6">
-                                <textarea id="body" cols="10" rows="10" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body" value="{{ old('body') }}" autofocus></textarea>
+                                <textarea id="body" cols="10" rows="10" class="form-control" name="body">{!! $post->body !!}</textarea>
                                 @if ($errors->has('body'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('body') }}</strong>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\SessionGuard;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -51,7 +52,8 @@ class PostController extends Controller
         $this->validate($request, array(
             'title' => 'required|max:255',
             'slug' => 'required|min:5|max:255|unique:posts,slug',
-            'body' => 'required'                        
+            'body' => 'required',
+            'image' => 'sometimes|image'                        
         ));
         $user_id = Auth::guard('web')->user()->id;        
         $post = new Post;        
@@ -106,22 +108,36 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {                
+        
         if ($post->slug == $request->slug) {
             $this->validate($request, array(
                 'title' => 'required|max:255',                
-                'body' => 'required'                        
+                'body' => 'required',
+                'image' => 'image'                       
             ));
         }else{
             $this->validate($request, array(
                 'title' => 'required|max:255',
                 'slug' => 'required|min:5|max:255|unique:posts,slug',
-                'body' => 'required'                        
+                'body' => 'required',
+                'image' => 'image'                       
             ));
-        }        
+        }
+
         $post->title = $request->title;
         $post->body = clean($request->body);
-        $post->slug = $request->slug');        
-        $post->category_id = $request->category_id');  
+        $post->slug = $request->slug;        
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $filename = time().'-'.$image->getClientOriginalName().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/'.$filename);
+            Image::make($image)->resize(800,400)->save($location);
+
+            $oldFile = $post->image;
+            Storage::disk('public-images')->delete($oldFile);
+            $post->image = $filename;            
+        }
+        $post->category_id = $request->category_id;  
         $post->save();    
         if (isset($request->tags)) {
             $post->tags()->sync($request->tags);                
@@ -140,8 +156,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {        
-        $post->delete();
+        Storage::disk('public-images')->delete($post->image);
         $post->tags()->detach();
+        $post->delete();
         return redirect()->route('posts.index')->with('success', 'berhasil dihapus');
     }
 }
