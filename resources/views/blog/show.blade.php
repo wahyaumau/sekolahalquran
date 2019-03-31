@@ -4,9 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
+                <img src="{{ asset('images/' . $post->image) }}">
                 <div class="card-header">{{$post->title . " Kategori : ".$post->category->title}}</div>
                 <div class="card-body">
-                    <p>{{ $post->body }}</p>
+                    <p>{!! $post->body !!}</p>
                     <p>{{ $post->user->name }}</p>
                     <p>{{ $post->created_at }}</p>
                     @foreach($post->tags as $tag)

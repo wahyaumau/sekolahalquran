@@ -47,7 +47,7 @@ class TagController extends Controller
         ));
         $user_id = Auth::guard('web')->user()->id;        
         $tag = new Tag;        
-        $tag->name = $request->get('name');        
+        $tag->name = $request->name;        
         $tag->user_id = $user_id;
         $tag->save();
         return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
@@ -88,7 +88,7 @@ class TagController extends Controller
             'name' => 'required|max:255',            
         ));
         
-        $tag->name = $request->get('name');      
+        $tag->name = $request->name;      
         $tag->save();          
         return redirect()->route('tags.index')->with('success', 'berhasil diedit');
     }

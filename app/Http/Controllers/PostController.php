@@ -8,6 +8,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\SessionGuard;
+use Purifier;
+use Image;
 
 class PostController extends Controller
 {
@@ -53,10 +55,17 @@ class PostController extends Controller
         ));
         $user_id = Auth::guard('web')->user()->id;        
         $post = new Post;        
-        $post->title = $request->get('title');
-        $post->body = $request->get('body');
-        $post->slug = $request->get('slug');        
-        $post->category_id = $request->get('category_id');        
+        $post->title = $request->title;
+        $post->body = clean($request->body);
+        $post->slug = $request->slug;        
+        if ($request->hasFile('image')) {
+            $image = $request->image;
+            $filename = time().'-'.$image->getClientOriginalName().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/'.$filename);
+            Image::make($image)->resize(800,400)->save($location);
+            $post->image = $filename;            
+        }
+        $post->category_id = $request->category_id;        
         $post->user_id = $user_id;  
         $post->save();      
 
@@ -97,7 +106,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {                
-        if ($post->slug == $request->get('slug')) {
+        if ($post->slug == $request->slug) {
             $this->validate($request, array(
                 'title' => 'required|max:255',                
                 'body' => 'required'                        
@@ -109,10 +118,10 @@ class PostController extends Controller
                 'body' => 'required'                        
             ));
         }        
-        $post->title = $request->get('title');
-        $post->body = $request->get('body');
-        $post->slug = $request->get('slug');        
-        $post->category_id = $request->get('category_id');  
+        $post->title = $request->title;
+        $post->body = clean($request->body);
+        $post->slug = $request->slug');        
+        $post->category_id = $request->category_id');  
         $post->save();    
         if (isset($request->tags)) {
             $post->tags()->sync($request->tags);                

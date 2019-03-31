@@ -47,7 +47,7 @@ class CategoryController extends Controller
         ));
         $user_id = Auth::guard('web')->user()->id;        
         $category = new Category;        
-        $category->title = $request->get('title');        
+        $category->title = $request->title;        
         $category->user_id = $user_id;
         $category->save();
         return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
@@ -88,7 +88,7 @@ class CategoryController extends Controller
             'title' => 'required|max:255',            
         ));
         
-        $category->title = $request->get('title');      
+        $category->title = $request->title;      
         $category->save();          
         return redirect()->route('categories.index')->with('success', 'berhasil diedit');
     }
