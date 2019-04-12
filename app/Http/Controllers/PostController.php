@@ -53,7 +53,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|min:5|max:255|unique:posts,slug',
             'body' => 'required',
-            'image' => 'sometimes|image'                        
+            
         ));
         $user_id = Auth::guard('web')->user()->id;        
         $post = new Post;        
@@ -62,16 +62,16 @@ class PostController extends Controller
         $post->slug = $request->slug;        
         if ($request->hasFile('image')) {
             $image = $request->image;
-            $filename = time().'-'.$image->getClientOriginalName().'.'.$image->getClientOriginalExtension();
-            $location = public_path('images/'.$filename);
-            Image::make($image)->resize(800,400)->save($location);
+            $filename = time().'_'.$request->slug.'_'.$image->getClientOriginalName();
+            $folderName = 'images';
+            Storage::putFileAs($folderName, $image, $filename);            
             $post->image = $filename;            
         }
         $post->category_id = $request->category_id;        
         $post->user_id = $user_id;  
         $post->save();      
-
         $post->tags()->sync($request->tags, false);
+        
         return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
     }
 
