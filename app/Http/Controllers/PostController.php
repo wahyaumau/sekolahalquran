@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $listPost = Post::paginate(10);        
+        $listPost = Post::paginate(20);        
         return view('posts.index', compact('listPost'));
     }
 
@@ -53,6 +53,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|min:5|max:255|unique:posts,slug',
             'body' => 'required',
+            'image' => 'mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             
         ));
         $user_id = Auth::guard('web')->user()->id;        
@@ -72,7 +73,7 @@ class PostController extends Controller
         $post->save();      
         $post->tags()->sync($request->tags, false);
         
-        return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
+        return redirect()->route('posts.index')->with('success', 'Post berhasil dibuat');
     }
 
     /**
@@ -113,14 +114,14 @@ class PostController extends Controller
             $this->validate($request, array(
                 'title' => 'required|max:255',                
                 'body' => 'required',
-                'image' => 'image'                       
+                'image' => 'mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             ));
         }else{
             $this->validate($request, array(
                 'title' => 'required|max:255',
                 'slug' => 'required|min:5|max:255|unique:posts,slug',
                 'body' => 'required',
-                'image' => 'image'                       
+                'image' => 'mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             ));
         }
 
@@ -145,7 +146,7 @@ class PostController extends Controller
             $post->tags()->sync(array());                
         }
         
-        return redirect()->route('posts.index')->with('success', 'berhasil diedit');
+        return redirect()->route('posts.index')->with('success', 'Post berhasil diedit');
     }
 
     /**
@@ -159,6 +160,6 @@ class PostController extends Controller
         Storage::disk('public-images')->delete($post->image);
         $post->tags()->detach();
         $post->delete();
-        return redirect()->route('posts.index')->with('success', 'berhasil dihapus');
+        return redirect()->route('posts.index')->with('success', 'Post berhasil dihapus');
     }
 }

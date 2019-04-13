@@ -4,11 +4,24 @@
     <div class="row">
         <div class="col-md-8">
             <h3>Daftar Tag</h3>
-        </div>
+        </div>        
         <div class="col-md-4">
             <a href="{{route('tags.create')}}"><button class="btn btn-primary">Create Tag</button></a>
         </div>
     </div>
+    @if (\Session::has('success'))
+    <div class="row">
+        <div class="alert alert-success col-md-12">
+            <p>{{ \Session::get('success') }}</p>
+        </div>
+    </div>
+    @elseif (\Session::has('fail'))
+    <div class="row">
+        <div class="alert alert-danger col-md-12">
+            <p>{{ \Session::get('fail') }}</p>
+        </div>
+    </div>
+    @endif
     <div class="box">
         <table class="table table-striped">
             <thead>

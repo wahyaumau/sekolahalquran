@@ -7,6 +7,7 @@
                 <div class="card-header">{{ __('Create Category') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('categories.update', $category) }}">
+                        @method('PATCH')
                         @csrf
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Category Title') }}</label>

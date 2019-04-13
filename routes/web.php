@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::resource('posts', 'PostController');
-Route::post('comments/store/{post}', 'CommentController@store')->name('comments.store');
-Route::resource('comments', 'CommentController',[
-	'except' => ['create', 'show', 'store']
-]);
+
+Route::prefix('comments')->group(function(){
+	Route::post('/{post}/store', 'CommentController@store')->name('comments.store');
+	Route::delete('/{comment}/delete', 'CommentController@destroy')->name('comments.destroy');
+});
 Route::resource('categories', 'CategoryController',[
 	'except' => ['show']
 ]);

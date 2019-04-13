@@ -50,7 +50,7 @@ class TagController extends Controller
         $tag->name = $request->name;        
         $tag->user_id = $user_id;
         $tag->save();
-        return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
+        return redirect()->route('tags.index')->with('success', 'Tag berhasil ditambahkan');
     }
 
     /**
@@ -90,7 +90,7 @@ class TagController extends Controller
         
         $tag->name = $request->name;      
         $tag->save();          
-        return redirect()->route('tags.index')->with('success', 'berhasil diedit');
+        return redirect()->route('tags.index')->with('success', 'Tag berhasil diedit');
     }
 
     /**
@@ -103,6 +103,6 @@ class TagController extends Controller
     {        
         $tag->posts()->detach();
         $tag->delete();
-        return redirect()->route('tags.index')->with('success', 'berhasil dihapus');
+        return redirect()->route('tags.index')->with('success', 'Tag berhasil dihapus');
     }
 }

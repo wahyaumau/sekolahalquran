@@ -6,11 +6,24 @@
     <div class="row">
         <div class="col-md-8">
             <h3>Daftar Post</h3>
-        </div>
+        </div>        
         <div class="col-md-4">
             <a href="{{route('posts.create')}}"><button class="btn btn-primary">Create Post</button></a>
         </div>        
-    </div>        
+    </div>
+    @if (\Session::has('success'))
+    <div class="row">
+        <div class="alert alert-success col-md-12">
+            <p>{{ \Session::get('success') }}</p>
+        </div>
+    </div>
+    @elseif (\Session::has('fail'))
+    <div class="row">
+        <div class="alert alert-danger col-md-12">
+            <p>{{ \Session::get('fail') }}</p>
+        </div>
+    </div>
+    @endif        
 
     <div class="box">    
         <table class="table table-striped">
@@ -20,6 +33,7 @@
                     <th>Title</th>
                     <th>Body</th>
                     <th>Category</th>
+                    <th>Tag</th>
                     <th>URL</th>
                     <th>Creator</th>
                     <th>Created Time</th>
@@ -30,9 +44,14 @@
             @foreach($listPost as $post)
                 <tr>            
                     <td>{{$post->id}}</td>
-                    <td>{{$post->title}}</td>                    
-                    <td>{{ str_limit($post->body, $limit = 100, $end = '...') }}</td>
+                    <td>{{$post->title}}</td>                                        
+                    <td>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</td>
                     <td>{{$post->category->title}}</td>
+                    <td>
+                        @foreach($post->tags as $tag)
+                        {{ $tag->name }}
+                        @endforeach
+                    </td>
                     <td>{{$post->slug}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at}}</td>

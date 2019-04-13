@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $category->title = $request->title;        
         $category->user_id = $user_id;
         $category->save();
-        return redirect()->route('posts.index')->with('success', 'berhasil ditambahkan');
+        return redirect()->route('categories.index')->with('success', 'Category berhasil ditambahkan');
     }
 
     /**
@@ -90,7 +90,7 @@ class CategoryController extends Controller
         
         $category->title = $request->title;      
         $category->save();          
-        return redirect()->route('categories.index')->with('success', 'berhasil diedit');
+        return redirect()->route('categories.index')->with('success', 'Category berhasil diedit');
     }
 
     /**
@@ -102,6 +102,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {        
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'berhasil dihapus');
+        return redirect()->route('categories.index')->with('success', 'Category berhasil dihapus');
     }
 }
