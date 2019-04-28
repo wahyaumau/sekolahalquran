@@ -11,17 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PageController@index');
+Route::get('/profile', 'PageController@profile');
+Route::prefix('blogs')->group(function(){
+	Route::get('/{slug}', 'BlogController@show')->name('blogs.show');	
+	Route::get('/category/{category}', 'BlogController@blogByCategory')->name('blogs.category');	
+	Route::get('/tag/{tag}', 'BlogController@blogByTag')->name('blogs.tag');	
+	Route::get('/', 'BlogController@index')->name('blogs.index');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
 
 Auth::routes();
 
-Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
+
 Route::resource('posts', 'PostController');
 
 Route::prefix('comments')->group(function(){

@@ -2,22 +2,23 @@
 
 @section('content')
 <!-- Carousel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    @foreach($listPost as $post)
+    <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+    @endforeach
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="img-carousel img-fit d-block w-100" src="{{asset('images/slider/1.jpeg')}}" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="img-carousel img-fit d-block w-100" src="{{asset('images/slider/2.jpeg')}}" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="img-carousel img-fit d-block w-100" src="{{asset('images/slider/3.jpeg')}}" alt="Third slide">
-    </div>
+    @foreach($listPost as $post)
+    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+      <img class="img-carousel img-fit d-block w-100" src="{{asset('images/'.$post->image)}}" alt="{{ $post->title }}">
+      <div class="carousel-caption d-none d-md-block">
+          <h5>{{ $post->title }}</h5>
+          <p>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</p>
+        </div>
+    </div>    
+    @endforeach
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,7 +29,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<!-- Carousel -->
 
 <div class="jumbotron jumbotron-fluid m-0 px-4 img-fit text-light" style="background-image: url('images/slider/penerimaan.jpg');">
   <div class="mx-4">

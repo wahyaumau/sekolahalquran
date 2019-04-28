@@ -43,7 +43,7 @@
             <tbody>
             @foreach($listPost as $post)
                 <tr>
-                    <td>{{$post->id}}</td>
+                    <td>{{$loop->index}}</td>
                     <td>{{$post->title}}</td>
                     <td>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</td>
                     <td>{{$post->category->title}}</td>

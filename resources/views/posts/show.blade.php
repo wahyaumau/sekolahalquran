@@ -61,7 +61,7 @@
             <div class="well">
                 <dl class="dl-horizontal">
                     <label>Url:</label>
-                    <p><a href="{{ route('blog.show', $post->slug) }}">{{ $post->slug }}</a></p>
+                    <p><a href="{{ route('blogs.show', $post->slug) }}">{{ $post->slug }}</a></p>
                 </dl>
                 <dl class="dl-horizontal">
                     <label>Category:</label>

@@ -42,15 +42,21 @@
                 <a class="nav-link text-center" href="{{url('/profile')}}">Profil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="{{route('posts.index')}}">Posting</a>
+                <a class="nav-link text-center" href="{{ route('blogs.index') }}">Posting</a>                
               </li>
+              @auth
+              <li class="nav-item">
+                <a class="nav-link text-center" href="{{route('posts.index')}}">Post Management</a>
+              </li>
+              @endauth
+
 
               <!-- Panel Goes Here -->
               @yield('panel')
 
               @guest
                 <li class="nav-item">
-                  <a class="nav-link text-center text-white btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
+                  <a class="nav-link text-center text-white btn btn-success" href="{{ route('login') }}">{{ __('Admin Login') }}</a>
                 </li>
                 <!-- @if (Route::has('register'))
                   <li class="nav-item">
