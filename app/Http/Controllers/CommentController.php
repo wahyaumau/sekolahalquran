@@ -28,7 +28,7 @@ class CommentController extends Controller
         $comment->approved = false;
         $comment->post()->associate($post->id);
         $comment->save();        
-        return redirect()->route('blog.show', $post->slug)->with('success', 'comment berhasil ditambahkan');
+        return redirect()->route('blogs.show', $post->slug)->with('success', 'comment berhasil ditambahkan');
     }
 
 
