@@ -35,17 +35,17 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
 
-              <li class="nav-item active">
+              <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                 <a class="nav-link text-center" href="{{url('/')}}">Beranda<span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
                 <a class="nav-link text-center" href="{{url('/profile')}}">Profil</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item {{ Request::is('blogs*') ? 'active' : '' }}">
                 <a class="nav-link text-center" href="{{ route('blogs.index') }}">Posting</a>                
               </li>
               @auth
-              <li class="nav-item">
+              <li class="nav-item {{ Request::is('posts*') ? 'active' : '' }}">
                 <a class="nav-link text-center" href="{{route('posts.index')}}">Post Management</a>
               </li>
               @endauth
