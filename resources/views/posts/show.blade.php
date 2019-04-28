@@ -22,9 +22,9 @@
             <hr>
 
             <div class="tags">
-                <span>Tag : </span>
-                @foreach ($post->tags as $tag)
-                <span class="label label-default">{{ $tag->name }}</span>
+                <span>Category : </span>
+                @foreach ($post->categories as $category)
+                <span class="label label-default">{{ $category->name }}</span>
                 @endforeach
             </div>
             <div id="backend-comments" style="margin-top: 50px;">
@@ -65,7 +65,9 @@
                 </dl>
                 <dl class="dl-horizontal">
                     <label>Category:</label>
-                    <p>{{ $post->category->title }}</p>
+                    @foreach($post->categories as $category)
+                    <p>{{ $category->name }}</p>
+                    @endforeach
                 </dl>
                 <dl class="dl-horizontal">
                     <label>Created At:</label>

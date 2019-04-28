@@ -36,8 +36,8 @@
             <tbody>
                 @foreach($listCategory as $category)
                 <tr>
-                    <td>{{$category->id}}</td>
-                    <td>{{$category->title}}</td>
+                    <td>{{$loop->index+1}}</td>
+                    <td>{{$category->name}}</td>
                     <td>{{$category->user->name}}</td>
                     <td>
                         <a href="{{ route('categories.edit', $category)}}" class="btn btn-primary">Edit</a>

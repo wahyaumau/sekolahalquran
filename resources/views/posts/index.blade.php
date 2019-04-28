@@ -32,8 +32,7 @@
                     <th>No</th>
                     <th>Title</th>
                     <th>Body</th>
-                    <th>Category</th>
-                    <th>Tag</th>
+                    <th>Category</th>                    
                     <th>URL</th>
                     <th>Creator</th>
                     <th>Created Time</th>
@@ -43,13 +42,12 @@
             <tbody>
             @foreach($listPost as $post)
                 <tr>
-                    <td>{{$loop->index}}</td>
+                    <td>{{$loop->index+1}}</td>
                     <td>{{$post->title}}</td>
-                    <td>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</td>
-                    <td>{{$post->category->title}}</td>
+                    <td>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</td>                    
                     <td>
-                        @foreach($post->tags as $tag)
-                        {{ $tag->name }}
+                        @foreach($post->categories as $categories)
+                        {{ $categories->name }}
                         @endforeach
                     </td>
                     <td>{{$post->slug}}</td>

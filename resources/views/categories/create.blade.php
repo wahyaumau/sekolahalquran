@@ -9,12 +9,12 @@
                     <form method="POST" action="{{ route('categories.store') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Category Title') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Category Title') }}</label>
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
-                                @if ($errors->has('title'))
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('title') }}</strong>
+                                    <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
                             </div>

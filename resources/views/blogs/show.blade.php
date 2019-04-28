@@ -21,8 +21,8 @@
         <!-- Date/Time -->
         <p>Dibuat pada {{ date('F dS, Y - g:iA' ,strtotime($post->created_at)) }}</p>
         <p>Kategori :
-            @foreach($post->tags as $tag)
-            <span class="badge badge-secondary">{{ $tag->name }}</span>
+            @foreach($post->categories as $category)
+            <span class="badge badge-secondary">{{ $category->name }}</span>
             @endforeach
         </p>
 

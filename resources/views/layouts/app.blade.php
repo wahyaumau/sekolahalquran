@@ -48,6 +48,9 @@
               <li class="nav-item {{ Request::is('posts*') ? 'active' : '' }}">
                 <a class="nav-link text-center" href="{{route('posts.index')}}">Post Management</a>
               </li>
+              <li class="nav-item {{ Request::is('categories*') ? 'active' : '' }}">
+                <a class="nav-link text-center" href="{{route('categories.index')}}">Categories Management</a>
+              </li>
               @endauth
 
 

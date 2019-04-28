@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\Tag;
 
 class BlogController extends Controller
 {
@@ -17,29 +16,17 @@ class BlogController extends Controller
 
     public function index(){
     	$listPost = Post::latest()->paginate(20);
-        $listCategory = Category::all();
-        $listTag = Tag::all();
+        $listCategory = Category::all();        
         $message = "Display all blog";
-        $category=null;
-        $tag=null;
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'category', 'tag'));
+        $category=null;        
+    	return view('blogs.index', compact('listPost', 'listCategory', 'message', 'category'));
     }
 
     public function blogByCategory(Category $category){
-    	$listPost = $category->post()->latest()->paginate(20);
-    	$listCategory = Category::all();
-        $listTag = Tag::all();
-        $tag=null;
+    	$listPost = $category->posts()->latest()->paginate(20);
+    	$listCategory = Category::all();                
         $message = "Display ".$listPost->count()." blog by ".$category->title." category";
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'category', 'tag'));
+    	return view('blogs.index', compact('listPost', 'listCategory', 'message', 'category'));
     }
-
-    public function blogByTag(Tag $tag){
-    	$listPost = $tag->posts()->latest()->paginate(20);
-    	$listCategory = Category::all();
-        $listTag = Tag::all();
-        $category=null;
-        $message = "Display ".$listPost->count()." blog by ".$tag->name." tag";
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'tag', 'category'));
-    }
+    
 }

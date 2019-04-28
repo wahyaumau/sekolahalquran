@@ -33,7 +33,4 @@ Route::prefix('comments')->group(function(){
 Route::resource('categories', 'CategoryController',[
 	'except' => ['show']
 ]);
-Route::resource('tags', 'TagController', [
-	'except' => ['show']
-]);
 Route::get('/home', 'HomeController@index')->name('home');
