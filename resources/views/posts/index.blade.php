@@ -2,14 +2,14 @@
 
 
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     <div class="row">
         <div class="col-md-8">
             <h3>Daftar Post</h3>
-        </div>        
+        </div>
         <div class="col-md-4">
-            <a href="{{route('posts.create')}}"><button class="btn btn-primary">Create Post</button></a>
-        </div>        
+            <a href="{{route('posts.create')}}"><button class="btn btn-success float-right">Create Post</button></a>
+        </div>
     </div>
     @if (\Session::has('success'))
     <div class="row">
@@ -23,10 +23,10 @@
             <p>{{ \Session::get('fail') }}</p>
         </div>
     </div>
-    @endif        
+    @endif
 
-    <div class="box">    
-        <table class="table table-striped">
+    <div class="box">
+        <table class="table table-responsive-lg table-striped">
             <thead>
                 <tr>
                     <th>No</th>
@@ -42,9 +42,9 @@
             </thead>
             <tbody>
             @foreach($listPost as $post)
-                <tr>            
+                <tr>
                     <td>{{$post->id}}</td>
-                    <td>{{$post->title}}</td>                                        
+                    <td>{{$post->title}}</td>
                     <td>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</td>
                     <td>{{$post->category->title}}</td>
                     <td>
@@ -76,7 +76,6 @@
             </div>
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 @endsection
-

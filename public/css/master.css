@@ -1,0 +1,33 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #00A658;
+}
+
+.img-carousel {
+    height: 35vw;
+    min-height: 200px;
+    width: 100%;
+}
+
+.img-fit {
+  object-fit: cover; // here
+  background-position: center;
+  background-size: cover;
+}
+
+.postbody-shadow {
+    -webkit-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 14px -2px rgba(0, 0, 0, 0.75);
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .nav-img {
+        height: 30px;
+    }
+}

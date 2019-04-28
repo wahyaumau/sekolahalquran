@@ -4,7 +4,7 @@
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
     <script>
-        tinymce.init({ 
+        tinymce.init({
             selector:'textarea',
             plugins: 'link'
         });
@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -47,7 +47,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Post Body') }}</label>
                             <div class="col-md-6">
@@ -118,5 +118,5 @@
         $('.select2-single').select2();
         $('.select2-single').select2().val({!! json_encode($post->category->id)!!}).trigger('change');
         $('.select2-multi').select2().val({!! json_encode($post->tags()->allRelatedIds()->toArray())!!}).trigger('change');
-    </script> 
+    </script>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     <div class="row">
         <div class="col-md-8">
             <h3>Daftar Category</h3>
@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="box">
-        <table class="table table-striped">
+        <table class="table table-responsive-lg table-striped">
             <thead>
                 <tr>
                     <th>No</th>
@@ -27,7 +27,7 @@
                     <td>{{$category->user->name}}</td>
                     <td>
                         <a href="{{ route('categories.edit', $category)}}" class="btn btn-primary">Edit</a>
-                    </td>                    
+                    </td>
                     <td>
                         <form action="{{ route('categories.destroy', $category)}}" method="post">
                             @csrf

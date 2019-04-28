@@ -10,7 +10,7 @@
     </script>
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -28,8 +28,8 @@
                                 </span>
                                 @endif
                             </div>
-                        </div>                        
-                        
+                        </div>
+
                         <div class="form-group row">
                             <label for="body" class="col-md-2 col-form-label text-md-right">{{ __('Post Body') }}</label>
                             <div class="col-md-8">

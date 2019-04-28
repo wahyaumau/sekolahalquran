@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     @if (\Session::has('success'))
     <div class="row">
         <div class="alert alert-success col-md-12">
@@ -17,10 +17,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1>{{ $post->title }}</h1>
-            
+
             <p class="lead">{!! $post->body !!}</p>
             <hr>
-            
+
             <div class="tags">
                 <span>Tag : </span>
                 @foreach ($post->tags as $tag)
@@ -29,7 +29,7 @@
             </div>
             <div id="backend-comments" style="margin-top: 50px;">
                 <h3>Comments <small>{{ $post->comments()->count() }} total</small></h3>
-                <table class="table">
+                <table class="table table-responsive-lg">
                     <thead>
                         <tr>
                             <th>Name</th>

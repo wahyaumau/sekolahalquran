@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container-fluid m-0 p-4">
     <div class="row">
         <div class="col-md-8">
             <h3>Daftar Tag</h3>
-        </div>        
+        </div>
         <div class="col-md-4">
             <a href="{{route('tags.create')}}"><button class="btn btn-primary">Create Tag</button></a>
         </div>
@@ -23,7 +23,7 @@
     </div>
     @endif
     <div class="box">
-        <table class="table table-striped">
+        <table class="table table-responsive-lg table-striped">
             <thead>
                 <tr>
                     <th>No</th>
@@ -40,7 +40,7 @@
                     <td>{{$tag->user->name}}</td>
                     <td>
                         <a href="{{ route('tags.edit', $tag)}}" class="btn btn-primary">Edit</a>
-                    </td>                    
+                    </td>
                     <td>
                         <form action="{{ route('tags.destroy', $tag)}}" method="post">
                             @csrf
