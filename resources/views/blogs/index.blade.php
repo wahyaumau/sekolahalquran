@@ -6,12 +6,13 @@
 			<div class="card-header">
 				<h5>Category <span class="badge badge-pill badge-secondary">{{ $listCategory->count() }}</span></h5>
 			</div>
-			
-			<ul class="list-group list-group-flush">
-				@foreach($listCategory as $category)
-				<li class="list-group-item"><a href="{{ route('blogs.category', $category) }}">{{ $category->title }}</a><span class="badge badge-pill badge-secondary">{{ $category->post->count() }}</span></li>
+			<div class="list-group">
+				@foreach($listCategory as $blogCategory)
+				<a href="{{ route('blogs.category',$blogCategory) }}" class="list-group-item list-group-item-action {{ $blogCategory==$category? 'active':'' }}">
+					{{ $blogCategory->title }}<span class="badge badge-pill badge-secondary">{{ $blogCategory->post->count() }}</span>
+				</a>
 				@endforeach
-			</ul>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-6">
@@ -19,15 +20,21 @@
 			<div class="card-header">
 				<h5>Tag <span class="badge badge-pill badge-secondary">{{ $listTag->count() }}</span></h5>
 			</div>
-			
-			<ul class="list-group list-group-flush">
-				@foreach($listTag as $tag)
-				<li class="list-group-item"><a href="{{ route('blogs.tag', $tag) }}">{{ $tag->name }}</a><span class="badge badge-pill badge-secondary">{{ $tag->posts->count() }}</span></li>
+			<div class="list-group">
+				@foreach($listTag as $blogTag)
+				<a href="{{ route('blogs.tag',$blogTag) }}" class="list-group-item list-group-item-action {{ $blogTag==$tag? 'active':'' }}">
+					{{ $blogTag->name }}<span class="badge badge-pill badge-secondary">{{ $blogTag->posts->count() }}</span>
+				</a>
 				@endforeach
-			</ul>
+			</div>
 		</div>
 	</div>
 </div>
+
+<div class="alert alert-primary" role="alert">
+  {{ $message }} @if($tag != null || $category != null)<a href="{{ route('blogs.index') }}" class="alert-link">Display all blogs</a>@endif
+</div>
+
 @foreach($listPost as $post)
 <div class="col-md-10">
 	<div class="card">

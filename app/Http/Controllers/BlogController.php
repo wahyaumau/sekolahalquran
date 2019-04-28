@@ -19,20 +19,27 @@ class BlogController extends Controller
     	$listPost = Post::latest()->paginate(20);
         $listCategory = Category::all();
         $listTag = Tag::all();
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag'));
+        $message = "Display all blog";
+        $category=null;
+        $tag=null;
+    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'category', 'tag'));
     }
 
     public function blogByCategory(Category $category){
     	$listPost = $category->post()->latest()->paginate(20);
     	$listCategory = Category::all();
         $listTag = Tag::all();
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag'));
+        $tag=null;
+        $message = "Display ".$listPost->count()." blog by ".$category->title." category";
+    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'category', 'tag'));
     }
 
     public function blogByTag(Tag $tag){
     	$listPost = $tag->posts()->latest()->paginate(20);
     	$listCategory = Category::all();
         $listTag = Tag::all();
-    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag'));
+        $category=null;
+        $message = "Display ".$listPost->count()." blog by ".$tag->name." tag";
+    	return view('blogs.index', compact('listPost', 'listCategory', 'listTag', 'message', 'tag', 'category'));
     }
 }
