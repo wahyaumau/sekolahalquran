@@ -9,4 +9,12 @@ class Comment extends SoftDelete
     public function post(){
     	return $this->belongsTo('App\Models\Post');
     }
+
+    public function comments(){
+    	return $this->hasMany('App\Models\Comment');
+    }
+
+    public function comment(){
+    	return $this->belongsTo('App\Models\Comment');
+    }
 }

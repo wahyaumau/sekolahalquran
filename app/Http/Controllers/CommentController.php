@@ -44,4 +44,21 @@ class CommentController extends Controller
         $comment->delete();
         return redirect()->route('posts.show', $post_id)->with('success', 'comment berhasil dihapus');
     }
+
+    public function reply(Request $request, Post $post, Comment $comment){        
+        $this->validate($request, array(
+            'nameReply' => 'required|max:255',
+            'emailReply' => 'required|email|max:255',
+            'commentReply' => 'required|min:5, max:5000',
+        ));
+        $reply = new Comment;
+        $reply->name = $request->nameReply;
+        $reply->email = $request->emailReply;
+        $reply->comment = $request->commentReply;
+        $reply->approved = false;
+        $reply->post()->associate($post->id);
+        $reply->comment()->associate($comment->id);        
+        $reply->save();        
+        return redirect()->route('blogs.show', $post->slug)->with('success', 'comment berhasil ditambahkan');
+    }
 }

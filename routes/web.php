@@ -29,6 +29,7 @@ Route::resource('posts', 'PostController');
 Route::prefix('comments')->group(function(){
 	Route::post('/{post}/store', 'CommentController@store')->name('comments.store');
 	Route::delete('/{comment}/delete', 'CommentController@destroy')->name('comments.destroy');
+	Route::post('/{post}/{comment}/reply', 'CommentController@reply')->name('comments.reply');
 });
 Route::resource('categories', 'CategoryController',[
 	'except' => ['show']
