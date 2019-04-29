@@ -8,7 +8,7 @@
 			</div>
 			<div class="list-group">
 				@foreach($listCategory as $blogCategory)
-				<a href="{{ route('blogs.category',$blogCategory) }}" class="list-group-item list-group-item-action {{ $blogCategory==$category? 'active':'' }}">
+				<a href="{{ route('blogs.category',$blogCategory) }}" class="list-group-item list-group-item-action {{ Request::is('blogs/category/'.$blogCategory->id) ? 'active disabled' : '' }}">
 					{{ $blogCategory->name }}<span class="badge badge-pill badge-secondary">{{ $blogCategory->posts->count() }}</span>
 				</a>
 				@endforeach
@@ -18,7 +18,10 @@
 </div>
 
 <div class="alert alert-primary" role="alert">
-  {{ $message }} @if($category != null)<a href="{{ route('blogs.index') }}" class="alert-link">Display all blogs</a>@endif
+  {{ $message }} 
+  @if(Request::is('blogs/category*'))
+  <a href="{{ route('blogs.index') }}" class="alert-link">Display all blogs</a>
+  @endif
 </div>
 
 @foreach($listPost as $post)

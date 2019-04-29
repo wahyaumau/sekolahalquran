@@ -96,15 +96,15 @@
         @foreach($comment->comments as $reply)
         <div class="media mb-3">
           <img class="d-flex mr-3 rounded-circle author-image" src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($reply->email))) . "?s=50&d=monsterid" }}" alt="">
-        <div class="media-body">
-          <div class="author-name">
-            <h4 class="mb-0">{{ $reply->name }}</h4>
-            <small class="author-time">{{ date('F dS, Y - g:iA' ,strtotime($reply->created_at)) }}</small>
+          <div class="media-body">
+            <div class="author-name">
+              <h4 class="mb-0">{{ $reply->name }}</h4>
+              <small class="author-time">{{ date('F dS, Y - g:iA' ,strtotime($reply->created_at)) }}</small>
+            </div>
+            <div class="comment-content mt-2 ml-2">
+              {{ $reply->comment }}
+            </div>
           </div>
-          <div class="comment-content mt-2 ml-2">
-            {{ $reply->comment }}
-          </div>
-        </div>
         </div>
         @endforeach
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#replyForm{{ $comment->id }}" aria-expanded="false" aria-controls="replyForm">
@@ -175,40 +175,19 @@
           </div>
         </div>
       </div>
-      <!-- Categories Widget -->
-      <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">Web Design</a>
-                </li>
-                <li>
-                  <a href="#">HTML</a>
-                </li>
-                <li>
-                  <a href="#">Freebies</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="#">JavaScript</a>
-                </li>
-                <li>
-                  <a href="#">CSS</a>
-                </li>
-                <li>
-                  <a href="#">Tutorials</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      {{-- category widget --}}
+      <div class="card">
+        <div class="card-header">
+          <h5>Category <span class="badge badge-pill badge-secondary">{{ $listCategory->count() }}</span></h5>
         </div>
-      </div>
+        <div class="list-group">
+          @foreach($listCategory as $blogCategory)
+          <a href="{{ route('blogs.category',$blogCategory) }}" class="list-group-item list-group-item-action {{ Request::is('blogs/category/'.$blogCategory->id) ? 'active disabled' : '' }}">
+            {{ $blogCategory->name }}<span class="badge badge-pill badge-secondary">{{ $blogCategory->posts->count() }}</span>
+          </a>
+          @endforeach
+        </div>
+      </div>      
       <!-- Side Widget -->
       <div class="card my-4">
         <h5 class="card-header">Side Widget</h5>

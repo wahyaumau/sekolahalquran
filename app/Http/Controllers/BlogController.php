@@ -11,22 +11,22 @@ class BlogController extends Controller
     public function show($slug)
     {        
     	$post = Post::whereSlug($slug)->first();
-        return view('blogs.show', compact('post'));
+        $listCategory = Category::all();
+        return view('blogs.show', compact('post', 'listCategory'));
     }
 
     public function index(){
     	$listPost = Post::latest()->paginate(20);
         $listCategory = Category::all();        
-        $message = "Display all blog";
-        $category=null;        
-    	return view('blogs.index', compact('listPost', 'listCategory', 'message', 'category'));
+        $message = "Display all blog";        
+    	return view('blogs.index', compact('listPost', 'listCategory', 'message'));
     }
 
     public function blogByCategory(Category $category){
     	$listPost = $category->posts()->latest()->paginate(20);
     	$listCategory = Category::all();                
         $message = "Display ".$listPost->count()." blog by ".$category->title." category";
-    	return view('blogs.index', compact('listPost', 'listCategory', 'message', 'category'));
+    	return view('blogs.index', compact('listPost', 'listCategory', 'message'));
     }
     
 }
