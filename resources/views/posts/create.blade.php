@@ -62,7 +62,7 @@
                                 </span>
                                 @endif
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-group row">
                             <label for="category_id" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
                             <div class="col-md-6">
@@ -89,7 +89,7 @@
 @endsection
 @section('javascripts')
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script type="text/javascript">        
+    <script type="text/javascript">
         $('.select2-multi').select2();
     </script>
 @endsection

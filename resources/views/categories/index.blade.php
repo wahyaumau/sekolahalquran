@@ -19,7 +19,7 @@
             <h3>Daftar Category</h3>
         </div>
         <div class="col-md-4">
-            <a href="{{route('categories.create')}}"><button class="btn btn-primary">Create Category</button></a>
+            <a href="{{route('categories.create')}}"><button class="btn btn-success float-right">Create Category</button></a>
         </div>
     </div>
 

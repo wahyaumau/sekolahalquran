@@ -11,13 +11,13 @@
   </ol>
   <div class="carousel-inner">
     @foreach($listPost as $post)
-    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+    <div class="item carousel-item {{ $loop->first ? 'active' : '' }}">
       <img class="img-carousel img-fit d-block w-100" src="{{asset('images/'.$post->image)}}" alt="{{ $post->title }}">
-      <div class="carousel-caption d-none d-md-block">
-          <h5>{{ $post->title }}</h5>
+      <div class="carousel-caption d-sm-block">
+          <h3>{{ $post->title }}</h3>
           <p>{{ str_limit((strip_tags($post->body)), $limit = 100, $end = '...') }}</p>
         </div>
-    </div>    
+    </div>
     @endforeach
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -30,12 +30,18 @@
   </a>
 </div>
 
+<div class="container-fluid">
+
+</div>
+
 <div class="jumbotron jumbotron-fluid m-0 px-4 img-fit text-light" style="background-image: url('images/slider/penerimaan.jpg');">
   <div class="mx-4">
     <h1 class="display-4">Penerimaan Santri Baru SQI</h1>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
 </div>
