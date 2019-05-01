@@ -90,6 +90,17 @@
 @section('javascripts')
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script type="text/javascript">
-        $('.select2-multi').select2();
-    </script>
+        $(document).ready(function(){
+            $('.select2-multi').select2();
+
+            $("#title").keyup(function () {
+                var value = $(this).val();
+                $("#slug").val(convertToSlug(value));
+            }).keyup();    
+        });
+        
+        function convertToSlug(str){
+            return str.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+        }
+    </script>    
 @endsection

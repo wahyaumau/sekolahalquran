@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -35,10 +38,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    
 
     /**
      * Get a validator for an incoming registration request.
@@ -68,5 +68,41 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showRegistrationForm(){
+        $users = User::all();
+        if ($users->count()>0) {
+            if (Auth::check()) {
+                return view('auth.verify_credential_form');
+            }else{
+                return redirect()->route('login');
+            }
+        }else{
+            return view('auth.register');
+        }        
+    }
+
+    public function verifyCredential(Request $request){
+        $this->validate($request, array(            
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string'],
+        ));        
+        if ((Hash::check($request->password, Auth::user()->password)) && $request->email==Auth::user()->email) {
+            return view('auth.register');
+        }else{
+            return redirect()->route('welcome');
+        }
+    }
+
+    public function register(Request $request)
+    {
+        $users = User::all();
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        if ($users->count()==0) {
+            $this->guard()->login($user);
+        }
+        return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('welcome');
 Route::get('/profile', 'PageController@profile');
 Route::prefix('blogs')->group(function(){
 	Route::get('/{slug}', 'BlogController@show')->name('blogs.show');	
@@ -22,6 +22,7 @@ Route::prefix('blogs')->group(function(){
 
 
 Auth::routes();
+Route::post('/verify', 'Auth\RegisterController@verifyCredential')->middleware('auth')->name('verify.credential');
 
 
 Route::resource('posts', 'PostController');
