@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+    protected $softCascade = ['posts'];
 
     /**
      * The attributes that are mass assignable.

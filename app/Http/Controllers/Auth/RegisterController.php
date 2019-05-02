@@ -73,10 +73,10 @@ class RegisterController extends Controller
     public function showRegistrationForm(){
         $users = User::all();
         if ($users->count()>0) {
-            if (Auth::check()) {
+            if (Auth::user() == User::first()) {
                 return view('auth.verify_credential_form');
             }else{
-                return redirect()->route('login');
+                abort(403, "You don't have access to do this.");
             }
         }else{
             return view('auth.register');
@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string'],
         ));        
-        if ((Hash::check($request->password, Auth::user()->password)) && $request->email==Auth::user()->email) {
+        if ((Hash::check($request->password, User::first()->password)) && $request->email==User::first()->email) {
             return view('auth.register');
         }else{
             return redirect()->route('welcome');
