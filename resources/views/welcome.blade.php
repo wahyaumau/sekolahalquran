@@ -36,13 +36,27 @@
 
 <div class="jumbotron jumbotron-fluid m-0 px-4 img-fit text-light" style="background-image: url('images/slider/penerimaan.jpg');">
   <div class="mx-4">
-    <h1 class="display-4">Penerimaan Santri Baru SQI</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <h1 class="display-4">Kamukah Sang Pejuang Qur'an?</h1>
+    <p class="lead">Rasulullah SAW bersabda :</p>
+    <p><i>
+      "Allah memiliki keluarga dari golongan manusia.
+      Sahabat bertanya : siapa mereka ya Rasulallah?
+      Rosul SAW menjawab : mereka adalah ahlul Quran.
+      Mereka adalah hamba yg istimewa" </i> (H.R ibnu Majah).
+    </p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <p>
+      YUK GABUNG! - <b>PENERIMAAN SANTRI BARU SEKOLAH AL-QUR'AN INDONESIA</b>.
+      Mari bersama-sama wujudkan Peradaban Gemilang bersama kami!
+      <br><br>
+      <b>Program Unggulan :</b>
+      <li>Dauroh 6 bulan hafal 30 Juz</li>
+      <li>Dauroh 1 tahun hafal 30 Juz</li>
+      <li>Tahfizh 30 Juz + S1</li>
+      <li>Tahfizh 30 Juz + SMA</li>
+      <li>Les Tahsin dan Tahfizh al-Qur'an</li>
+    </p>
+    <a class="btn btn-primary btn-lg" href="{{ route('blogs.show', "penerimaan-santri-baru") }}" role="button">Info Selengkapnya</a>
   </div>
 </div>
 @endsection

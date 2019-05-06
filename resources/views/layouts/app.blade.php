@@ -39,20 +39,20 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{url('/')}}">Beranda<span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-center" href="{{url('/')}}"><b>Beranda</b><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{url('/profile')}}">Profil</a>
+                        <a class="nav-link text-center" href="{{url('/profile')}}"><b>Profil</b></a>
                     </li>
                     <li class="nav-item {{ Request::is('blogs*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{ route('blogs.index') }}">Posting</a>
+                        <a class="nav-link text-center" href="{{ route('blogs.index') }}"><b>Posting</b></a>
                     </li>
                     @auth
                     <li class="nav-item {{ Request::is('posts*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{route('posts.index')}}">Post Management</a>
+                        <a class="nav-link text-center" href="{{route('posts.index')}}"><b>Post Management</b></a>
                     </li>
                     <li class="nav-item {{ Request::is('categories*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{route('categories.index')}}">Categories Management</a>
+                        <a class="nav-link text-center" href="{{route('categories.index')}}"><b>Categories Management</b></a>
                     </li>
                     @endauth
 
@@ -60,7 +60,7 @@
 
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link text-center text-white btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-center text-white btn btn-success px-3 mx-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @else
                     <li class="nav-item dropdown">
