@@ -14,7 +14,7 @@
     <div class="item carousel-item {{ $loop->first ? 'active' : '' }}">
       <img class="img-carousel img-fit d-block w-100" src="{{asset('images/'.$post->image)}}" alt="{{ $post->title }}">
       <div class="carousel-caption ">
-          <a class="text-white" href="{{route('blogs.show', $post->slug )}}"><h3>{{ $post->title }}</h3></a> 
+          <a class="text-white" href="{{route('blogs.show', $post->slug )}}"><h3>{{ $post->title }}</h3></a>
           <p class="d-none d-sm-block">{{ str_limit((strip_tags($post->body)), $limit = 200, $end = '...') }}</p>
         </div>
     </div>

@@ -96,6 +96,22 @@
             <div class="row">
                 <div class="col-md-4">
                     <ul class="navbar-nav">
+                      <li>
+                        <div class="row">
+                          <div class="col-2">
+                            <i class="fas fa-phone fa-2x"></i>
+                          </div>
+                          <div class="col-10">
+                            <b>Rekening Donasi</b>
+                            <p class="text-light">
+                              Transfer BNI Syari’ah a/n Yayasan Mutiara Bangsa Sejahtera
+                            </p>
+                            <p>
+                              No. Rekening <span class="text-success">0768071445</span> (kode bank <span class="text-success">427</span>)
+                            </p>
+                          </div>
+                        </div>
+                      </li>
                         <li>
                             <div class="row">
                                 <div class="col-2">
@@ -129,12 +145,12 @@
 
                 </div>
                 <div class="col-md-4">
-                    <div class="my-2">
+                    <div class="my-2 align-middle">
                         <p>Media Sosial</p>
-                        <a href="http://www.facebook.com/Sekolah Al-Qur’an Indonesia"><i class="mx-1 text-white fab fa-whatsapp fa-2x"></i></a>
-                        <a href="#"><i class="mx-1 text-white fab fa-instagram fa-2x"></i></a>
-                        <a href="#"><i class="mx-1 text-white fab fa-facebook fa-2x"></i></a>
-                        <a href="#"><i class="mx-1 text-white fab fa-youtube fa-2x"></i></a>
+                        <a href="#"><i class="mx-1 text-white fab fa-whatsapp fa-2x"></i> Whatsapp</a>
+                        <a href="#"><i class="mx-1 text-white fab fa-instagram fa-2x"></i> Instagram</a>
+                        <a href="#"><i class="mx-1 text-white fab fa-facebook fa-2x"></i> Facebook</a>
+                        <a href="#"><i class="mx-1 text-white fab fa-youtube fa-2x"></i> Youtube</a>
                     </div>
                 </div>
                 <div class="col-md-4">
