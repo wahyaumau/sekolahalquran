@@ -99,18 +99,21 @@
                       <li>
                         <div class="row">
                           <div class="col-2">
-                            <i class="fas fa-phone fa-2x"></i>
+                            <i class="fas fa-money-check-alt fa-2x"></i>
                           </div>
                           <div class="col-10">
-                            <b>Rekening Donasi</b>
+                            <h4>Rekening Donasi</h4>
                             <p class="text-light">
                               Transfer BNI Syari’ah a/n Yayasan Mutiara Bangsa Sejahtera
                             </p>
                             <p>
-                              No. Rekening <span class="text-success">0768071445</span> (kode bank <span class="text-success">427</span>)
+                              No. Rekening <span class="text-warning">0768071445</span> (kode bank <span class="text-warning">427</span>)
                             </p>
                           </div>
                         </div>
+                      </li>
+                      <li>
+                        <hr>
                       </li>
                         <li>
                             <div class="row">
@@ -118,10 +121,13 @@
                                     <i class="fas fa-map-marker-alt fa-2x"></i>
                                 </div>
                                 <div class="col-10">
-                                  <b>Alamat Kantor Sekretariat</b>
+                                  <h4>Alamat Kantor Sekretariat</h4>
                                   <p>Jl. Margahayu Kencana V Blok D1 No. 18, Kel. Margahayu Selatan, Kec. Margahayu, Kab. Bandung,  Jawa Barat 40226.</p>
                                 </div>
                             </div>
+                        </li>
+                        <li>
+                          <hr>
                         </li>
                         <li>
                             <div class="row">
@@ -129,15 +135,19 @@
                                     <i class="fas fa-phone fa-2x"></i>
                                 </div>
                                 <div class="col-10">
+                                    <h4>Nomor Kontak</h4>
                                     <a class="text-white" href="tel:087828748400">0878-2874-8400 <small>(Ust. Abu)</small> </a><br>
                                     <a class="text-white" href="tel:089668117552">0896-6811-7552 <small>(Afifah)</small> </a>
                                 </div>
                             </div>
                         </li>
                         <li>
+                          <hr>
+                        </li>
+                        <li>
                             <div class="row my-4">
                                 <div class="col-md-12">
-                                    <button class="btn btn-success" href>Info Selengkapnya</button>
+                                    <a href="#!" class="btn btn-success btn-block">Info Selengkapnya</a>
                                 </div>
                             </div>
                         </li>
@@ -146,11 +156,23 @@
                 </div>
                 <div class="col-md-4">
                     <div class="my-2 align-middle">
-                        <p>Media Sosial</p>
-                        <a href="#"><i class="mx-1 text-white fab fa-whatsapp fa-2x"></i> Whatsapp</a>
-                        <a href="#"><i class="mx-1 text-white fab fa-instagram fa-2x"></i> Instagram</a>
-                        <a href="#"><i class="mx-1 text-white fab fa-facebook fa-2x"></i> Facebook</a>
-                        <a href="#"><i class="mx-1 text-white fab fa-youtube fa-2x"></i> Youtube</a>
+                        <h4>Media Sosial</h4>
+                        <a href="#!" class="btn btn-outline-light my-1">
+                          <span class="fab fa-whatsapp mr-2"></span>
+                          Whatsapp
+                        </a>
+                        <a href="https://www.instagram.com/sekolahalquran_id" class="btn btn-outline-light my-1">
+                          <span class="fab fa-instagram mr-2"></span>
+                          Instagram
+                        </a>
+                        <a href="https://web.facebook.com/sekolahalquranid" class="btn btn-outline-light my-1">
+                          <span class="fab fa-facebook mr-2"></span>
+                          Facebook
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCutqZNGpak55B2HHCYlsK1w" class="btn btn-outline-light my-1">
+                          <span class="fab fa-youtube mr-2"></span>
+                          YouTube
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -160,7 +182,7 @@
                 </div>
             </div>
         </footer>
-        <div class="text-center p-1" style="background-color:#050505; font-size:10px;">
+        <div class="text-center p-1 shadow" style="background-color:#050505; font-size:10px;">
             <p class="text-light m-1">Copyright © 2019 SQI. All rights reserved. Hand-crafted by <a class="text-white" href="http://unisite.id"> <b>UNISITE.ID</b> </a> </p>
         </div>
 
