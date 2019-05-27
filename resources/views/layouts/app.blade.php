@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!-- Style -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/material-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/master.css')}}">
 
     <!-- Other Style -->
@@ -26,12 +26,12 @@
         <hr class="mx-0 my-0 px-0 py-0" style="height:4px;border:none;color:#958C4A;background-color:#958C4A;" />
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white mx-0">
-            <a class="navbar-brand" href="{{url('/')}}">
-                <img class="nav-img" src="{{asset('logo-ymbs.png')}}" height="50" alt="">
-                <img class="nav-img" src="{{asset('logo-sqi.png')}}" height="50" alt="">
-                <img class="ml-3" src="{{asset('logo-sqi-tulisan.png')}}" height="40" alt="">
-            </a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white mx-auto ">
+          <a class="navbar-brand text-center" href="{{url('/')}}">
+              <img class="nav-img" src="{{asset('logo-ymbs.png')}}" height="55" alt="">
+              <img class="nav-img" src="{{asset('logo-sqi.png')}}" height="55" alt="">
+              <img class="ml-3" src="{{asset('logo-sqi-tulisan.png')}}" height="40" alt="">
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,20 +39,20 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{url('/')}}"><b>Beranda</b><span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-center" href="{{url('/')}}"> <h5>Beranda</h5> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{url('/profile')}}"><b>Profil</b></a>
+                        <a class="nav-link text-center" href="{{url('/profile')}}"> <h5>Profil</h5> </a>
                     </li>
                     <li class="nav-item {{ Request::is('blogs*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{ route('blogs.index') }}"><b>Posting</b></a>
+                        <a class="nav-link text-center" href="{{ route('blogs.index') }}"> <h5>Posting</h5> </a>
                     </li>
                     @auth
                     <li class="nav-item {{ Request::is('posts*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{route('posts.index')}}"><b>Post Management</b></a>
+                        <a class="nav-link text-center" href="{{route('posts.index')}}"> <h5>Post Management</h5> </a>
                     </li>
                     <li class="nav-item {{ Request::is('categories*') ? 'active' : '' }}">
-                        <a class="nav-link text-center" href="{{route('categories.index')}}"><b>Categories Management</b></a>
+                        <a class="nav-link text-center" href="{{route('categories.index')}}"> <h5>Categories Management</h5> </a>
                     </li>
                     @endauth
 
@@ -60,7 +60,7 @@
 
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link text-center text-white btn btn-success px-3 mx-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-center text-white btn btn-success px-3 mx-3 " href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @else
                     <li class="nav-item dropdown">
@@ -144,32 +144,32 @@
                         <li>
                           <hr>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div class="row my-4">
                                 <div class="col-md-12">
                                     <a href="#!" class="btn btn-success btn-block">Info Selengkapnya</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </div>
                 <div class="col-md-4">
                     <div class="my-2 align-middle">
                         <h4>Media Sosial</h4>
-                        <a href="#!" class="btn btn-outline-light my-1">
+                        <a href="https://api.whatsapp.com/send?phone=6289668117552&text=Assalamualaikum%20SQI%20Saya%20Mau%20Bertanya" class="btn btn-outline-light my-1" target="_blank">
                           <span class="fab fa-whatsapp mr-2"></span>
                           Whatsapp
                         </a>
-                        <a href="https://www.instagram.com/sekolahalquran_id" class="btn btn-outline-light my-1">
+                        <a href="https://www.instagram.com/sekolahalquran_id" class="btn btn-outline-light my-1" target="_blank">
                           <span class="fab fa-instagram mr-2"></span>
                           Instagram
                         </a>
-                        <a href="https://web.facebook.com/sekolahalquranid" class="btn btn-outline-light my-1">
+                        <a href="https://web.facebook.com/sekolahalquranid" class="btn btn-outline-light my-1" target="_blank">
                           <span class="fab fa-facebook mr-2"></span>
                           Facebook
                         </a>
-                        <a href="https://www.youtube.com/channel/UCutqZNGpak55B2HHCYlsK1w" class="btn btn-outline-light my-1">
+                        <a href="https://www.youtube.com/channel/UCutqZNGpak55B2HHCYlsK1w" class="btn btn-outline-light my-1" target="_blank">
                           <span class="fab fa-youtube mr-2"></span>
                           YouTube
                         </a>

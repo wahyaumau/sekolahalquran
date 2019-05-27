@@ -34,9 +34,9 @@
 
 </div>
 
-<div class="jumbotron jumbotron-fluid m-0 px-4 img-fit text-light" style="background-image: url('images/slider/penerimaan.jpg');">
-  <div class="mx-4">
-    <h1 class="display-4">Kamukah Sang Pejuang Qur'an?</h1>
+<div class="jumbotron jumbotron-fluid m-0 px-4 img-fit text-light justify-content-center" style="background-image: url('images/important/penerimaan.png');">
+  <div class="col-md-8">
+    <h1 class="display-4"> <b>Kamukah Sang Pejuang Qur'an?</b> </h1>
     <p class="lead">Rasulullah SAW bersabda :</p>
     <p><i>
       "Allah memiliki keluarga dari golongan manusia.
@@ -56,7 +56,11 @@
       <li>Tahfizh 30 Juz + SMA</li>
       <li>Les Tahsin dan Tahfizh al-Qur'an</li>
     </p>
-    <a class="btn btn-primary btn-lg" href="{{ route('blogs.show', "penerimaan-santri-baru") }}" role="button">Info Selengkapnya</a>
+    <a class="btn btn-success btn-lg" href="{{ route('blogs.show', "penerimaan-santri-baru") }}" role="button">Info Selengkapnya</a>
   </div>
+</div>
+<div class="container-fluid p-0">
+  <img class="w-100 d-none d-sm-block" src="{{asset('images/important/donasi-horizontal.png')}}" alt="">
+  <img class="w-100 d-sm-none" src="{{asset('images/important/donasi-vertical.png')}}" alt="">
 </div>
 @endsection
